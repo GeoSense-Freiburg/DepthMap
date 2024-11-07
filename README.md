@@ -36,6 +36,7 @@ python setup.py
 
 **Luis Kremer**  
 Chair of Sensor-based Geoinformatics 
+
 University of Freiburg, Germany
 
 ## License
