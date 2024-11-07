@@ -17,7 +17,7 @@ To set up the project, follow these steps:
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/DepthMap.git
+git clone https://github.com/Luis-Kr/DepthMap.git
 
 # Navigate into the directory
 cd DepthMap
@@ -25,3 +25,18 @@ cd DepthMap
 # Run setup script (this will download large models >2GB)
 python setup.py
 ```
+
+
+## Requirements
+- Python 3.8+
+- CUDA-capable GPU (recommended)
+- Conda package manager
+
+## Author
+
+**Luis Kremer**  
+Chair of Sensor-based Geoinformatics 
+University of Freiburg, Germany
+
+## License
+MIT License
