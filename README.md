@@ -38,6 +38,23 @@ conda activate depthmap
 python -m DepthMap.main input_folder=path/to/images output.dir=path/to/output
 ```
 
+### Mac-specific issues (Apple Silicon)
+
+I case the error message `Unexpected error: The operator 'aten::upsample_bicubic2d.out' is not currently implemented for the MPS device` appears when running the script. This occurs because PyTorch's Metal Performance Shaders (MPS) backend for Apple Silicon doesn't yet support all operations. To work around this:
+
+```bash
+# Set this environment variable before running
+export PYTORCH_ENABLE_MPS_FALLBACK=1
+
+# Or: alternatively, you can add this line to your .zshrc or .bash_profile file to make it persistent across terminal sessions:
+echo 'export PYTORCH_ENABLE_MPS_FALLBACK=1' >> ~/.zshrc #same applies for .bash_profile
+source ~/.zshrc
+```
+
+**Note**: Using this fallback will cause these specific operations to run on CPU instead of GPU, which may result in slightly slower performance.
+
+
+
 ### Configuration
 
 The default configuration can be found in config/main.yaml. You can override any of these settings via command line:
@@ -76,6 +93,7 @@ The tool generates:
     - 95th percentile depth
     - Mean depth
     - Median depth
+
 
 ## Requirements
 - Python 3.8+
