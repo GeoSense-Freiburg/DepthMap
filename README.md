@@ -34,8 +34,8 @@ Run the depth estimation with default settings:
 # Activate the conda environment
 conda activate depthmap
 
-# Run the main script to create the depth maps
-python -m DepthMap.main input_folder=path/to/images output.dir=path/to/output
+# Run the main script to create the depth maps with the default configurations
+python -m DepthMap.main
 ```
 
 ### Mac-specific issues (Apple Silicon)
