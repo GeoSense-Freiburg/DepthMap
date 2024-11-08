@@ -115,7 +115,8 @@ def get_conda_lockfile():
 def setup_conda_environment():
     """Create conda environment from appropriate lock file if it doesn't exist."""
     env_name = "depthmap"
-    lock_file = get_conda_lockfile()
+    #lock_file = get_conda_lockfile()
+    lock_file = "conda-lock.yml"
     logging.info(f"Using conda lock file: {lock_file}")
     lock_path = Path(lock_file)
     

@@ -10,7 +10,7 @@ dependencies:
   - torchvision
   - tqdm
   - opencv
-  - numpy
+  - numpy<=2.0
   - hydra-core
   - setuptools
   - pip:
