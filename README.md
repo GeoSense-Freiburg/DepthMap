@@ -1,8 +1,6 @@
 # DepthMap
 
-<video width="100%" autoplay loop muted playsinline>
-  <source src="demo.mp4" type="video/mp4">
-</video>
+![DepthMap](DepthMap.gif)
 
 A Python package for depth map estimation using Depth-Anything. This tool processes images to generate depth maps using the Depth-Anything-V2 model, providing both visual depth maps and numerical depth data. The package automatically handles model downloading, environment setup, and provides an easy-to-use interface for batch processing images.
 
