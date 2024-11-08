@@ -43,6 +43,15 @@ python -m DepthMap.main input_folder=path/to/images output.dir=path/to/output
 The default configuration can be found in config/main.yaml. You can override any of these settings via command line:
 
 - `input_folder`: Directory containing input images
+- `output.dir`: Directory for saving depth maps
+- `depth_measurement`: Choose between "relative" or "metric" depth
+  - `relative`: Provides relative depth values (better for general use)
+  - `metric`: Fine-tuned version that attempts to predict actual depth in meters
+- `encoder`: Model encoder type (currently only "vitl" supported)
+- `dataset`: For metric depth, choose between:
+  - `hypersim`: Optimized for indoor scenes
+  - `vkitti`: Optimized for outdoor scenes
+- `max_depth`: Maximum depth (in meters) to be expected in the input image (only for metric depth)
 
 
 Example with multiple parameters:
@@ -56,7 +65,7 @@ python -m DepthMap.main \
     max_depth=10
 ```
 
-### Output
+## Output
 
 The tool generates:
 
