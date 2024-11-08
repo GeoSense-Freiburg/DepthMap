@@ -27,14 +27,36 @@ def download_url(url, output_path):
     with DownloadProgressBar(unit='B', unit_scale=True, miniters=1, desc=output_path.name) as t:
         urllib.request.urlretrieve(url, filename=output_path, reporthook=t.update_to)
 
-def download_model_weights():
-    """Download the model weights if they don't exist."""
+def download_relative_model_weights():
+    """Download the model weights (relative values as output) if they don't exist."""
+    models = {
+        "depth_anything_v2_vitl.pth": "https://huggingface.co/depth-anything/Depth-Anything-V2-Large/resolve/main/depth_anything_v2_vitl.pth?download=true"
+    }
+    
+    model_dir = Path("models/Depth-Anything-V2/checkpoints")
+    model_dir.mkdir(parents=True, exist_ok=True)
+    
+    for model_name, url in models.items():
+        target_path = model_dir / model_name
+        if not target_path.exists():
+            logging.info(f"Downloading {model_name} from {url}")
+            try:
+                download_url(url, target_path)
+                logging.info(f"Successfully downloaded {model_name}")
+            except Exception as e:
+                logging.error(f"Failed to download {model_name}: {e}")
+                sys.exit(1)
+        else:
+            logging.info(f"{model_name} already exists")
+
+def download_metric_model_weights():
+    """Download the model weights (metric output) if they don't exist."""
     models = {
         "depth_anything_v2_metric_hypersim_vitl.pth": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-Hypersim-Large/resolve/main/depth_anything_v2_metric_hypersim_vitl.pth?download=true",
         "depth_anything_v2_metric_vkitti_vitl.pth": "https://huggingface.co/depth-anything/Depth-Anything-V2-Metric-VKITTI-Large/resolve/main/depth_anything_v2_metric_vkitti_vitl.pth?download=true"
     }
     
-    model_dir = Path("models/test/Depth-Anything-V2/metric_depth/checkpoints")
+    model_dir = Path("models/Depth-Anything-V2/metric_depth/checkpoints")
     model_dir.mkdir(parents=True, exist_ok=True)
     
     for model_name, url in models.items():
@@ -103,7 +125,8 @@ def main():
     setup_logging()
     setup_conda_environment()
     clone_depth_anything()
-    download_model_weights()
+    download_relative_model_weights()
+    download_metric_model_weights()
 
 def build_package():
     """Function to build and install the package."""
