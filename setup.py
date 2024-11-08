@@ -127,8 +127,8 @@ def setup_conda_environment():
     if not check_conda_env(env_name):
         logging.info(f"Creating conda environment '{env_name}'...")
         try:
-            subprocess.run(['conda-lock', 'install', '--name', env_name, '--file', str(lock_path)], check=True)
-            #subprocess.run(['conda', 'create', '--name', env_name, '--file', str(lock_path)], check=True)
+            #subprocess.run(['conda-lock', 'install', '--name', env_name, '--file', str(lock_path)], check=True)
+            subprocess.run(['conda', 'create', '--name', env_name, '--file', str(lock_path)], check=True)
             logging.info(f"Successfully created conda environment '{env_name}'")
         except subprocess.CalledProcessError as e:
             logging.error(f"Failed to create conda environment: {e}")
