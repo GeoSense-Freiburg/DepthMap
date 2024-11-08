@@ -1,0 +1,12 @@
+defaults:
+  - _self_
+
+input_folder: "test/images" # folder containing the input images to be processed
+
+output:
+  dir: "test/output" # folder to save the output images
+
+depth_measurement: "relative" # "relative "or "metric"
+encoder: "vitl" # so far only "vitl" is supported
+dataset: "hypersim" # only applies to depth_mesaurement="metric" | "hypersim" for indoor scenes, "vkitti" for outdoor scenes
+max_depth: 20 # only applies to depth_mesaurement="metric" | maximum depth in meters to be expected in an image (scales the model output)
