@@ -75,7 +75,7 @@ def download_metric_model_weights():
 
 def clone_depth_anything():
     """Clone the Depth-Anything repository if it doesn't exist."""
-    repo_path = Path("models/test/Depth-Anything-V2")
+    repo_path = Path("models/Depth-Anything-V2")
     if not repo_path.exists():
         logging.info("Cloning Depth-Anything repository...")
         try:
