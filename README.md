@@ -1,9 +1,9 @@
 ![DepthMap](DepthMap.png)
 
-A Python package for depth map estimation using Depth-Anything. This tool processes images to generate depth maps using the Depth-Anything-V2 model, providing both visual depth maps and numerical depth data. The package automatically handles model downloading, environment setup, and provides an easy-to-use interface for batch processing images.
+A Python workflow for depth map estimation using ![Depth-Anything](https://github.com/DepthAnything/Depth-Anything-V2?tab=readme-ov-file). This tool processes images to generate depth maps using the Depth-Anything-V2 model, providing both visual depth maps and numerical depth data. The package automatically handles model downloading, environment setup, and provides an easy-to-use interface for batch processing images.
 
 ## Features
-- Automatic download of pre-trained Depth-Anything-V2 models
+- Automatic download of pre-trained Depth-Anything-V2 models (large version only)
 - Batch processing of images
 - Outputs both visual depth maps and raw depth data
 - Statistical analysis of depth values
@@ -82,5 +82,12 @@ The tool generates:
 - CUDA-capable GPU (recommended)
 - Conda package manager
 
+## License
+
+This project has two licensing components:
+
+1. **Depth-Anything Model**: The Depth-Anything model is governed by its own license terms. You must comply with the [Depth-Anything License](https://github.com/DepthAnything/Depth-Anything-V2/blob/main/LICENSE) for any use of the model.
+
+2. **This Project**: The DepthMap workflow code (excluding the Depth-Anything model) is released under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 
