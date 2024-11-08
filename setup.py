@@ -6,6 +6,7 @@ from pathlib import Path
 import urllib.request
 import logging
 from tqdm import tqdm
+import platform
 
 def setup_logging():
     """Configure logging with custom formatter."""
@@ -99,23 +100,37 @@ def check_conda_env(env_name):
         logging.error(f"Failed to check conda environments: {e}")
         return False
 
+def get_conda_lockfile():
+    """Get the appropriate conda lock file based on OS."""
+    system = platform.system().lower()
+    if system == 'linux':
+        return 'conda-linux-64.lock'
+    elif system == 'darwin':
+        return 'conda-osx-64.lock'
+    elif system == 'windows':
+        return 'conda-win-64.lock'
+    else:
+        raise OSError(f"Unsupported operating system: {system}")
+
 def setup_conda_environment():
-    """Create conda environment from environment.yaml if it doesn't exist."""
+    """Create conda environment from appropriate lock file if it doesn't exist."""
     env_name = "depthmap"
-    yaml_path = Path("environment.yaml")
+    lock_file = get_conda_lockfile()
+    logging.info(f"Using conda lock file: {lock_file}")
+    lock_path = Path(lock_file)
     
-    if not yaml_path.exists():
-        logging.error("environment.yaml not found")
+    if not lock_path.exists():
+        logging.error(f"{lock_file} not found")
         sys.exit(1)
         
     if not check_conda_env(env_name):
         logging.info(f"Creating conda environment '{env_name}'...")
         try:
-            subprocess.run(['conda', 'env', 'create', '-f', str(yaml_path)], check=True)
+            subprocess.run(['conda', 'create', '--name', env_name, '--file', str(lock_path)], check=True)
             logging.info(f"Successfully created conda environment '{env_name}'")
         except subprocess.CalledProcessError as e:
             logging.error(f"Failed to create conda environment: {e}")
-            logging.error(f"Please check the environment.yaml file and try to install it manually (with >>> conda env create -f environment.yaml <<< in the terminal)")
+            logging.error(f"Please check the {lock_file} file and try to install it manually (with >>> conda create --name {env_name} --file {lock_file} <<< in the terminal)")
             sys.exit(1)
     else:
         logging.info(f"Conda environment '{env_name}' already exists")
