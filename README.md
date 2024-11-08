@@ -1,6 +1,6 @@
 ![DepthMap](DepthMap.png)
 
-A Python workflow for depth map estimation using ![Depth-Anything](https://github.com/DepthAnything/Depth-Anything-V2?tab=readme-ov-file). This tool processes images to generate depth maps using the Depth-Anything-V2 model, providing both visual depth maps and numerical depth data. The package automatically handles model downloading, environment setup, and provides an easy-to-use interface for batch processing images.
+A Python workflow for depth map estimation using [Depth-Anything](https://github.com/DepthAnything/Depth-Anything-V2?tab=readme-ov-file). This tool processes images to generate depth maps using the Depth-Anything-V2 model, providing both visual depth maps and numerical depth data. The package automatically handles model downloading, environment setup, and provides an easy-to-use interface for batch processing images.
 
 ## Features
 - Automatic download of pre-trained Depth-Anything-V2 models (large version only)
