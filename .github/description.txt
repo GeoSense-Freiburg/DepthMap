@@ -1,0 +1,2 @@
+
+Depth map estimation tool using Depth-Anything-V2. Generate accurate depth maps from images with support for both relative and metric depth measurements.
