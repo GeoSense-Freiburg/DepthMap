@@ -21,4 +21,5 @@ test/output/
 test/visualization/pointcloud
 test/visualization/video
 outputs/
+notebook/
 
